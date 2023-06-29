@@ -1,7 +1,7 @@
 const prettier = require("prettier");
 const { concat, hardline, group } = prettier.doc.builders;
 const { Node } = require("melody-types");
-const { EXPRESSION_NEEDED, printChildBlock } = require("../util");
+const { EXPRESSION_NEEDED, printChildBlock, isWhitespaceOnly } = require("../util");
 
 const p = (node, path, print, options) => {
     node[EXPRESSION_NEEDED] = false;
