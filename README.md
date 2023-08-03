@@ -4,12 +4,12 @@
 
 ---
 
-This plugin for Prettier is a fork of [`prettier-plugin-twig-melody`](https://github.com/trivago/prettier-plugin-twig-melody), which is currently unmaintained. Several enhancements have been added to fit our development and templating needs at [Supersoniks](https://supersoniks.com/).
+This plugin for Prettier is a fork of [`prettier-plugin-twig-melody`](https://github.com/trivago/prettier-plugin-twig-melody), which is currently unmaintained. Several enhancements have been added to fit my development and templating needs.
 
 ## Install
 
 ```bash
-yarn add --dev @supersoniks/prettier-plugin-twig-melody
+yarn add --dev @afshinhaghighat/prettier-plugin-twig-melody
 ```
 
 ## Use
@@ -24,7 +24,7 @@ In your editor, if the plugin is not automatically picked up and invoked (e.g., 
 {
     "printWidth": 80,
     "tabWidth": 4,
-    "plugins": ["./node_modules/@supersoniks/prettier-plugin-twig-melody"]
+    "plugins": ["./node_modules/@afshinhaghighat/prettier-plugin-twig-melody"]
 }
 ```
 
