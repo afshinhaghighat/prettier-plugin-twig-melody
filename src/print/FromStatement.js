@@ -2,7 +2,7 @@ const prettier = require("prettier");
 const { group, concat, join, line, indent } = prettier.doc.builders;
 const { STRING_NEEDS_QUOTES } = require("../util");
 
-const printImportDeclaration = node => {
+const printImportDeclaration = (node) => {
     const parts = [node.key.name];
     if (node.key.name !== node.alias.name) {
         parts.push(" as ", node.alias.name);
@@ -17,7 +17,7 @@ const p = (node, path, print) => {
     // standalone. Therefore, we collect them manually.
     const mappedImports = node.imports.map(printImportDeclaration);
     const indentedParts = indent(
-        concat([line, join(concat([",", line]), mappedImports)])
+        concat([line, join(concat([",", line]), mappedImports)]),
     );
     return group(
         concat([
@@ -27,11 +27,11 @@ const p = (node, path, print) => {
             " import",
             indentedParts,
             line,
-            node.trimRight ? "-%}" : "%}"
-        ])
+            node.trimRight ? "-%}" : "%}",
+        ]),
     );
 };
 
 module.exports = {
-    printFromStatement: p
+    printFromStatement: p,
 };

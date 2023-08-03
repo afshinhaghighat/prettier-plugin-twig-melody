@@ -9,7 +9,7 @@ const {
     IS_ROOT_LOGICAL_EXPRESSION,
     firstValueInAncestorChain,
     findParentNode,
-    wrapExpressionIfNeeded
+    wrapExpressionIfNeeded,
 } = require("../util");
 const { extension: coreExtension } = require("melody-extension-core");
 const ALREADY_INDENTED = Symbol("ALREADY_INDENTED");
@@ -38,11 +38,11 @@ const printInterpolatedString = (node, path, print, options) => {
     return concat(printedFragments);
 };
 
-const operatorNeedsSpaces = operator => {
+const operatorNeedsSpaces = (operator) => {
     return NO_WHITESPACE_AROUND.indexOf(operator) < 0;
 };
 
-const hasLogicalOperator = node => {
+const hasLogicalOperator = (node) => {
     return node.operator === "or" || node.operator === "and";
 };
 
@@ -75,7 +75,7 @@ const printBinaryExpression = (node, path, print) => {
     const alreadyIndented = firstValueInAncestorChain(
         path,
         ALREADY_INDENTED,
-        false
+        false,
     );
     if (!alreadyIndented && isBinaryRight) {
         node.right[ALREADY_INDENTED] = true;
@@ -83,7 +83,7 @@ const printBinaryExpression = (node, path, print) => {
     const foundRootAbove = firstValueInAncestorChain(
         path,
         IS_ROOT_LOGICAL_EXPRESSION,
-        false
+        false,
     );
 
     const parentNode = findParentNode(path);
@@ -115,7 +115,7 @@ const printBinaryExpression = (node, path, print) => {
     const potentiallyIndented = [
         whitespaceAroundOperator ? line : softline,
         node.operator,
-        whitespaceAroundOperator ? " " : ""
+        whitespaceAroundOperator ? " " : "",
     ];
     if (rightNeedsParens) {
         potentiallyIndented.push("(");
@@ -128,7 +128,7 @@ const printBinaryExpression = (node, path, print) => {
         ? concat(potentiallyIndented)
         : indent(concat(potentiallyIndented));
     const result = concat(
-        wrapExpressionIfNeeded(path, [...parts, rightHandSide], node)
+        wrapExpressionIfNeeded(path, [...parts, rightHandSide], node),
     );
 
     const shouldCreateTopLevelGroup = !foundRootAbove && shouldGroupOnTopLevel;
@@ -151,5 +151,5 @@ const p = (node, path, print, options) => {
 };
 
 module.exports = {
-    printBinaryExpression: p
+    printBinaryExpression: p,
 };

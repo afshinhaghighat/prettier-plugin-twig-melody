@@ -5,7 +5,7 @@ const { Node } = require("melody-types");
 const {
     hasNoNewlines,
     PRESERVE_LEADING_WHITESPACE,
-    PRESERVE_TRAILING_WHITESPACE
+    PRESERVE_TRAILING_WHITESPACE,
 } = require("../util");
 
 const IS_ELSEIF = Symbol("IS_ELSEIF");
@@ -44,8 +44,8 @@ const p = (node, path, print) => {
             isElseIf ? "elseif" : "if",
             indent(concat([line, path.call(print, "test")])),
             " ",
-            node.trimRightIf ? "-%}" : "%}"
-        ])
+            node.trimRightIf ? "-%}" : "%}",
+        ]),
     );
     const ifBody = printInline
         ? isEmptyIf
@@ -58,7 +58,7 @@ const p = (node, path, print) => {
             hardline,
             node.trimLeftElse ? "{%-" : "{%",
             " else ",
-            node.trimRightElse ? "-%}" : "%}"
+            node.trimRightElse ? "-%}" : "%}",
         );
         parts.push(printChildBlock(node, path, print, "alternate"));
     } else if (hasElseIfBranch) {
@@ -72,12 +72,12 @@ const p = (node, path, print) => {
             printInline ? "" : hardline,
             node.trimLeftEndif ? "{%-" : "{%",
             " endif ",
-            node.trimRight ? "-%}" : "%}"
+            node.trimRight ? "-%}" : "%}",
         );
     }
     return concat(parts);
 };
 
 module.exports = {
-    printIfStatement: p
+    printIfStatement: p,
 };

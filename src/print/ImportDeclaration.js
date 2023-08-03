@@ -11,11 +11,11 @@ const p = (node, path, print) => {
             path.call(print, "key"),
             indent(concat([line, "as ", path.call(print, "alias")])),
             line,
-            node.trimRight ? "-%}" : "%}"
-        ])
+            node.trimRight ? "-%}" : "%}",
+        ]),
     );
 };
 
 module.exports = {
-    printImportDeclaration: p
+    printImportDeclaration: p,
 };

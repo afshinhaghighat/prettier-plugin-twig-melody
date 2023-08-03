@@ -18,5 +18,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printVariableDeclarationStatement: p
+    printVariableDeclarationStatement: p,
 };

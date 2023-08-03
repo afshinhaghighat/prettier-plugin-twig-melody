@@ -7,12 +7,12 @@ const p = (node, path, print) => {
     const mappedElements = path.map(print, "elements");
     const indentedContent = concat([
         softline,
-        join(concat([",", line]), mappedElements)
+        join(concat([",", line]), mappedElements),
     ]);
 
     return group(concat(["[", indent(indentedContent), softline, "]"]));
 };
 
 module.exports = {
-    printArrayExpression: p
+    printArrayExpression: p,
 };

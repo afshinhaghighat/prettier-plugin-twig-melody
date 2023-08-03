@@ -3,7 +3,7 @@ const { concat, indent, hardline, line, group } = prettier.doc.builders;
 const {
     EXPRESSION_NEEDED,
     STRING_NEEDS_QUOTES,
-    printChildBlock
+    printChildBlock,
 } = require("../util");
 
 const printOpener = (node, path, print) => {
@@ -12,15 +12,15 @@ const printOpener = (node, path, print) => {
     const parts = [
         node.trimLeft ? "{%-" : "{%",
         " embed ",
-        path.call(print, "parent")
+        path.call(print, "parent"),
     ];
     if (node.argument) {
         parts.push(
-            indent(concat([line, "with ", path.call(print, "argument")]))
+            indent(concat([line, "with ", path.call(print, "argument")])),
         );
     }
     if (node.contextFree) {
-      parts.push(" only");
+        parts.push(" only");
     }
     parts.push(concat([line, node.trimRightEmbed ? "-%}" : "%}"]));
     return group(concat(parts));
@@ -33,12 +33,12 @@ const p = (node, path, print) => {
         hardline,
         node.trimLeftEndembed ? "{%-" : "{%",
         " endembed ",
-        node.trimRight ? "-%}" : "%}"
+        node.trimRight ? "-%}" : "%}",
     ]);
 
     return concat([printedOpener, children, closing]);
 };
 
 module.exports = {
-    printEmbedStatement: p
+    printEmbedStatement: p,
 };

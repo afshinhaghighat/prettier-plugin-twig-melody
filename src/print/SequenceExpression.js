@@ -4,7 +4,7 @@ const {
     removeSurroundingWhitespace,
     printChildGroups,
     isRootNode,
-    STRING_NEEDS_QUOTES
+    STRING_NEEDS_QUOTES,
 } = require("../util");
 
 const p = (node, path, print) => {
@@ -18,5 +18,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printSequenceExpression: p
+    printSequenceExpression: p,
 };

@@ -9,5 +9,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printSliceExpression: p
+    printSliceExpression: p,
 };

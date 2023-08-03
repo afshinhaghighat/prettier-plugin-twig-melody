@@ -7,7 +7,7 @@ const p = (node, path, print) => {
     const parts = [
         node.trimLeft ? "{%-" : "{%",
         " include ",
-        path.call(print, "source")
+        path.call(print, "source"),
     ];
     if (node.argument) {
         const printedArguments = path.call(print, "argument");
@@ -23,5 +23,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printIncludeStatement: p
+    printIncludeStatement: p,
 };

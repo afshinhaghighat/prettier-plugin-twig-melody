@@ -4,10 +4,10 @@ const {
     createTextGroups,
     stripTwigCommentChars,
     normalizeTwigComment,
-    countNewlines
+    countNewlines,
 } = require("../util");
 
-const p = node => {
+const p = (node) => {
     const originalText = node.value.value || "";
     const commentText = stripTwigCommentChars(originalText);
     const trimLeft = originalText.length >= 3 ? originalText[2] === "-" : false;
@@ -22,10 +22,10 @@ const p = node => {
     return concat([
         trimLeft ? "{#-" : "{#",
         commentText,
-        trimRight ? "-#}" : "#}"
+        trimRight ? "-#}" : "#}",
     ]);
 };
 
 module.exports = {
-    printTwigComment: p
+    printTwigComment: p,
 };

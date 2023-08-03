@@ -4,11 +4,11 @@ const {
     printChildBlock,
     isNotExpression,
     STRING_NEEDS_QUOTES,
-    GROUP_TOP_LEVEL_LOGICAL
+    GROUP_TOP_LEVEL_LOGICAL,
 } = require("../util");
 const { Node } = require("melody-types");
 
-const shouldAvoidBreakBeforeClosing = valueNode =>
+const shouldAvoidBreakBeforeClosing = (valueNode) =>
     Node.isObjectExpression(valueNode) ||
     isNotExpression(valueNode) ||
     Node.isArrayExpression(valueNode);
@@ -17,7 +17,7 @@ const buildSetStatement = (node, path, print, assignmentIndex) => {
     const varDeclaration = node.assignments[assignmentIndex];
     varDeclaration[GROUP_TOP_LEVEL_LOGICAL] = false;
     const avoidBreakBeforeClosing = shouldAvoidBreakBeforeClosing(
-        varDeclaration.value
+        varDeclaration.value,
     );
 
     return group(
@@ -26,12 +26,12 @@ const buildSetStatement = (node, path, print, assignmentIndex) => {
             " set ",
             path.call(print, "assignments", assignmentIndex),
             avoidBreakBeforeClosing ? " " : line,
-            node.trimRight ? "-%}" : "%}"
-        ])
+            node.trimRight ? "-%}" : "%}",
+        ]),
     );
 };
 
-const isEmbracingSet = node => {
+const isEmbracingSet = (node) => {
     return (
         Array.isArray(node.assignments) &&
         node.assignments.length === 1 &&
@@ -59,7 +59,7 @@ const printEmbracingSet = (node, path, print) => {
         node.trimLeft ? "{%-" : "{%",
         " set ",
         path.call(print, "assignments", "0", "name"),
-        node.trimRightSet ? " -%}" : " %}"
+        node.trimRightSet ? " -%}" : " %}",
     ];
     node[STRING_NEEDS_QUOTES] = false;
     const printedContents = printChildBlock(
@@ -68,7 +68,7 @@ const printEmbracingSet = (node, path, print) => {
         print,
         "assignments",
         "0",
-        "value"
+        "value",
     );
     // const printedContents = path.map(print, "assignments", "0", "value");
     parts.push(printedContents);
@@ -76,7 +76,7 @@ const printEmbracingSet = (node, path, print) => {
         hardline,
         node.trimLeftEndset ? "{%-" : "{%",
         " endset ",
-        node.trimRight ? "-%}" : "%}"
+        node.trimRight ? "-%}" : "%}",
     );
     return concat(parts);
 };
@@ -90,5 +90,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printSetStatement: p
+    printSetStatement: p,
 };

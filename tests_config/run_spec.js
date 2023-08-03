@@ -8,9 +8,9 @@ function run_spec(dirname, parsers, options) {
     options = Object.assign(
         {
             plugins: ["."],
-            tabWidth: 4
+            tabWidth: 4,
         },
-        options
+        options,
     );
 
     /* instabul ignore if */
@@ -18,7 +18,7 @@ function run_spec(dirname, parsers, options) {
         throw new Error(`No parsers were specified for ${dirname}`);
     }
 
-    fs.readdirSync(dirname).forEach(filename => {
+    fs.readdirSync(dirname).forEach((filename) => {
         const path = dirname + "/" + filename;
         if (
             extname(filename) !== ".snap" &&
@@ -29,24 +29,24 @@ function run_spec(dirname, parsers, options) {
             const source = read(path).replace(/\r\n/g, "\n");
 
             const mergedOptions = Object.assign({}, options, {
-                parser: parsers[0]
+                parser: parsers[0],
             });
             const output = prettyprint(source, path, mergedOptions);
             test(`${filename} - ${mergedOptions.parser}-verify`, () => {
                 expect(
-                    raw(source + "~".repeat(80) + "\n" + output)
+                    raw(source + "~".repeat(80) + "\n" + output),
                 ).toMatchSnapshot(filename);
             });
 
-            parsers.slice(1).forEach(parserName => {
+            parsers.slice(1).forEach((parserName) => {
                 test(`${filename} - ${parserName}-verify`, () => {
                     const verifyOptions = Object.assign(mergedOptions, {
-                        parser: parserName
+                        parser: parserName,
                     });
                     const verifyOutput = prettyprint(
                         source,
                         path,
-                        verifyOptions
+                        verifyOptions,
                     );
                     expect(output).toEqual(verifyOutput);
                 });
@@ -58,7 +58,7 @@ global.run_spec = run_spec;
 
 function stripLocation(ast) {
     if (Array.isArray(ast)) {
-        return ast.map(e => stripLocation(e));
+        return ast.map((e) => stripLocation(e));
     }
     if (typeof ast === "object") {
         const newObj = {};
@@ -89,10 +89,10 @@ function prettyprint(src, filename, options) {
         src,
         Object.assign(
             {
-                filepath: filename
+                filepath: filename,
             },
-            options
-        )
+            options,
+        ),
     );
 }
 

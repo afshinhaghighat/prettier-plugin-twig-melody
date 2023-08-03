@@ -25,5 +25,5 @@ const p = (node, path, print, options) => {
 };
 
 module.exports = {
-    printObjectProperty: p
+    printObjectProperty: p,
 };

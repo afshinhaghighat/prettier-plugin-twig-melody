@@ -10,10 +10,10 @@ const textMap = {
     TestEvenExpression: "even",
     TestOddExpression: "odd",
     TestIterableExpression: "iterable",
-    TestSameAsExpression: "same as"
+    TestSameAsExpression: "same as",
 };
 
-const isNegator = node =>
+const isNegator = (node) =>
     node.constructor.name === "UnarySubclass" && node.operator === "not";
 
 const p = (node, path, print) => {
@@ -27,7 +27,7 @@ const p = (node, path, print) => {
     }
     if (!textMap[expressionType]) {
         console.error(
-            "TestExpression: No text for " + expressionType + " defined"
+            "TestExpression: No text for " + expressionType + " defined",
         );
     } else {
         parts.push(textMap[expressionType]);
@@ -41,9 +41,9 @@ const p = (node, path, print) => {
                     "(",
                     indent(concat([softline, joinedArguments])),
                     softline,
-                    ")"
-                ])
-            )
+                    ")",
+                ]),
+            ),
         );
     }
 
@@ -51,5 +51,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printTestExpression: p
+    printTestExpression: p,
 };

@@ -10,5 +10,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printNamedArgumentExpression: p
+    printNamedArgumentExpression: p,
 };

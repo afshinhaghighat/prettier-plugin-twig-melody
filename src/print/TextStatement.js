@@ -6,7 +6,7 @@ const {
     createTextGroups,
     PRESERVE_LEADING_WHITESPACE,
     PRESERVE_TRAILING_WHITESPACE,
-    NEWLINES_ONLY
+    NEWLINES_ONLY,
 } = require("../util");
 
 const newlinesOnly = (s, preserveWhitespace = true) => {
@@ -35,12 +35,12 @@ const p = (node, path, print) => {
     const textGroups = createTextGroups(
         rawString,
         preserveLeadingWhitespace,
-        preserveTrailingWhitespace
+        preserveTrailingWhitespace,
     );
 
     return join(concat([hardline, hardline]), textGroups);
 };
 
 module.exports = {
-    printTextStatement: p
+    printTextStatement: p,
 };

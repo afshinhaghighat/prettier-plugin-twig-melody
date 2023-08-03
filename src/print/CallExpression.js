@@ -3,7 +3,7 @@ const { group, concat, softline, line, indent, join } = prettier.doc.builders;
 const {
     EXPRESSION_NEEDED,
     STRING_NEEDS_QUOTES,
-    wrapExpressionIfNeeded
+    wrapExpressionIfNeeded,
 } = require("../util");
 const { Node } = require("melody-types");
 
@@ -24,10 +24,10 @@ const p = (node, path, print) => {
     } else {
         parts.push(
             indent(
-                concat([softline, join(concat([",", line]), mappedArguments)])
+                concat([softline, join(concat([",", line]), mappedArguments)]),
             ),
             softline,
-            ")"
+            ")",
         );
     }
 
@@ -37,5 +37,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printCallExpression: p
+    printCallExpression: p,
 };

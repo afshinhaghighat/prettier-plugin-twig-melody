@@ -10,7 +10,7 @@ const createOpener = (node, options) => {
         node.escapeType || "html",
         quoteChar(options),
         " ",
-        node.trimRightAutoescape ? "-%}" : "%}"
+        node.trimRightAutoescape ? "-%}" : "%}",
     ]);
 };
 
@@ -21,12 +21,12 @@ const p = (node, path, print, options) => {
         hardline,
         node.trimLeftEndautoescape ? "{%-" : "{%",
         " endautoescape ",
-        node.trimRight ? "-%}" : "%}"
+        node.trimRight ? "-%}" : "%}",
     );
 
     return concat(parts);
 };
 
 module.exports = {
-    printAutoescapeBlock: p
+    printAutoescapeBlock: p,
 };

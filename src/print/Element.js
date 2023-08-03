@@ -1,19 +1,12 @@
 const prettier = require("prettier");
-const {
-    concat,
-    group,
-    line,
-    hardline,
-    softline,
-    indent,
-    join
-} = prettier.doc.builders;
+const { concat, group, line, hardline, softline, indent, join } =
+    prettier.doc.builders;
 const {
     removeSurroundingWhitespace,
     isInlineElement,
     printChildGroups,
     EXPRESSION_NEEDED,
-    STRING_NEEDS_QUOTES
+    STRING_NEEDS_QUOTES,
 } = require("../util");
 
 const printOpeningTag = (node, path, print) => {
@@ -26,7 +19,7 @@ const printOpeningTag = (node, path, print) => {
         return concat([
             opener,
             indent(concat([" ", printedAttributes])),
-            openingTagEnd
+            openingTagEnd,
         ]);
     }
     return concat([opener, openingTagEnd]);
@@ -50,19 +43,19 @@ const p = (node, path, print) => {
         const hasChildren = childGroups.length > 0;
         const closingTag = concat(["</", node.name, ">"]);
         const result = [
-          openingGroup,
-          // No newlines between opening and closing tag of empty elements.
-          indent(concat([hasChildren ? softline : "", concat(childGroups)])),
-          ...[hasChildren ? softline : ""],
-          closingTag,
+            openingGroup,
+            // No newlines between opening and closing tag of empty elements.
+            indent(concat([hasChildren ? softline : "", concat(childGroups)])),
+            ...[hasChildren ? softline : ""],
+            closingTag,
         ];
-    
+
         return group(concat(result));
-      }
+    }
 
     return openingGroup;
 };
 
 module.exports = {
-    printElement: p
+    printElement: p,
 };

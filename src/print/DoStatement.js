@@ -6,10 +6,10 @@ const p = (node, path, print) => {
         node.trimLeft ? "{%-" : "{%",
         " do ",
         path.call(print, "value"),
-        node.trimRight ? " -%}" : " %}"
+        node.trimRight ? " -%}" : " %}",
     ]);
 };
 
 module.exports = {
-    printDoStatement: p
+    printDoStatement: p,
 };

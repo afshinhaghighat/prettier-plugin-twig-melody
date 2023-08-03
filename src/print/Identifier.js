@@ -12,5 +12,5 @@ const p = (node, path) => {
 };
 
 module.exports = {
-    printIdentifier: p
+    printIdentifier: p,
 };

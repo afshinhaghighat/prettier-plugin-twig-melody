@@ -8,10 +8,10 @@ const p = (node, path, print) => {
         node.trimLeft ? "{%-" : "{%",
         " extends ",
         path.call(print, "parentName"),
-        node.trimRight ? " -%}" : " %}"
+        node.trimRight ? " -%}" : " %}",
     ]);
 };
 
 module.exports = {
-    printExtendsStatement: p
+    printExtendsStatement: p,
 };

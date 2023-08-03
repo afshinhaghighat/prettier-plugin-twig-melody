@@ -3,7 +3,7 @@ const { concat, group, indent, line } = prettier.doc.builders;
 const {
     EXPRESSION_NEEDED,
     STRING_NEEDS_QUOTES,
-    isContractableNodeType
+    isContractableNodeType,
 } = require("../util");
 const { Node } = require("melody-types");
 
@@ -22,5 +22,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printExpressionStatement: p
+    printExpressionStatement: p,
 };

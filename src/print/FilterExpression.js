@@ -10,11 +10,11 @@ const {
     wrapInStringInterpolation,
     someParentNode,
     isMultipartExpression,
-    getDeepProperty
+    getDeepProperty,
 } = require("../util");
 
-const isInFilterBlock = path =>
-    someParentNode(path, node => node[FILTER_BLOCK] === true);
+const isInFilterBlock = (path) =>
+    someParentNode(path, (node) => node[FILTER_BLOCK] === true);
 
 const printArguments = (node, path, print, nodePath) => {
     const hasArguments = node.arguments && node.arguments.length > 0;
@@ -35,11 +35,11 @@ const printArguments = (node, path, print, nodePath) => {
         concat([
             "(",
             indent(
-                concat([softline, join(concat([",", line]), printedArguments)])
+                concat([softline, join(concat([",", line]), printedArguments)]),
             ),
             softline,
-            ")"
-        ])
+            ")",
+        ]),
     );
 };
 
@@ -52,7 +52,7 @@ const printOneFilterExpression = (node, path, print, nodePath) => {
 const joinFilters = (filterExpressions, space = "") => {
     return join(
         concat([space === "" ? softline : line, "|", space]),
-        filterExpressions
+        filterExpressions,
     );
 };
 
@@ -82,8 +82,8 @@ const p = (node, path, print, options) => {
                 currentNode.target,
                 path,
                 print,
-                pathToFinalTarget
-            )
+                pathToFinalTarget,
+            ),
         );
         pathToFinalTarget.push("target"); // Go one level deeper
         currentNode = currentNode.target;
@@ -92,7 +92,7 @@ const p = (node, path, print, options) => {
     const finalTarget = path.call(print, ...pathToFinalTarget);
     const isFilterBlock = isInFilterBlock(path); // Special case of FilterBlockStatement
     const targetNeedsParentheses = isMultipartExpression(
-        getDeepProperty(node, ...pathToFinalTarget)
+        getDeepProperty(node, ...pathToFinalTarget),
     );
     const parts = [];
     if (targetNeedsParentheses) {
@@ -113,7 +113,7 @@ const p = (node, path, print, options) => {
         const indentedFilters = concat([
             spaceAroundPipe ? line : softline,
             `|${space}`,
-            joinFilters(filterExpressions, space)
+            joinFilters(filterExpressions, space),
         ]);
         parts.push(indent(indentedFilters));
     }
@@ -132,5 +132,5 @@ const p = (node, path, print, options) => {
 };
 
 module.exports = {
-    printFilterExpression: p
+    printFilterExpression: p,
 };

@@ -2,14 +2,14 @@ const {
     firstValueInAncestorChain,
     quoteChar,
     STRING_NEEDS_QUOTES,
-    OVERRIDE_QUOTE_CHAR
+    OVERRIDE_QUOTE_CHAR,
 } = require("../util");
 
 const isUnmaskedOccurrence = (s, pos) => {
     return pos === 0 || s[pos - 1] !== "\\";
 };
 
-const containsUnmasked = char => s => {
+const containsUnmasked = (char) => (s) => {
     let pos = s.indexOf(char);
     while (pos >= 0) {
         if (isUnmaskedOccurrence(s, pos)) {
@@ -39,7 +39,7 @@ const p = (node, path, print, options) => {
     const needsQuotes = firstValueInAncestorChain(
         path,
         STRING_NEEDS_QUOTES,
-        false
+        false,
     );
     // In case of a string with interpolations, only double quotes
     // are allowed. This is then indicated by OVERRIDE_QUOTE_CHAR
@@ -47,7 +47,7 @@ const p = (node, path, print, options) => {
     const overridingQuoteChar = firstValueInAncestorChain(
         path,
         OVERRIDE_QUOTE_CHAR,
-        null
+        null,
     );
 
     if (needsQuotes) {
@@ -61,5 +61,5 @@ const p = (node, path, print, options) => {
 };
 
 module.exports = {
-    printStringLiteral: p
+    printStringLiteral: p,
 };

@@ -4,7 +4,7 @@ const {
     STRING_NEEDS_QUOTES,
     printSingleTwigTag,
     indentWithHardline,
-    isEmptySequence
+    isEmptySequence,
 } = require("../../src/util");
 const { Node } = require("melody-types");
 
@@ -32,6 +32,6 @@ const printSwitch = (node, path, print) => {
 
 module.exports = {
     printers: {
-        switchTag: printSwitch
-    }
+        switchTag: printSwitch,
+    },
 };

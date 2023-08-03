@@ -3,7 +3,7 @@ const { group, indent, line, hardline, concat } = prettier.doc.builders;
 const {
     EXPRESSION_NEEDED,
     isWhitespaceNode,
-    indentWithHardline
+    indentWithHardline,
 } = require("../util");
 
 const printFor = (node, path, print) => {
@@ -14,11 +14,11 @@ const printFor = (node, path, print) => {
     parts.push(
         path.call(print, "valueTarget"),
         " in ",
-        path.call(print, "sequence")
+        path.call(print, "sequence"),
     );
     if (node.condition) {
         parts.push(
-            indent(concat([line, "if ", path.call(print, "condition")]))
+            indent(concat([line, "if ", path.call(print, "condition")])),
         );
     }
     parts.push(concat([" ", node.trimRightFor ? "-%}" : "%}"]));
@@ -41,7 +41,7 @@ const p = (node, path, print) => {
             hardline,
             node.trimLeftElse ? "{%-" : "{%",
             " else ",
-            node.trimRightElse ? "-%}" : "%}"
+            node.trimRightElse ? "-%}" : "%}",
         );
         const printedOtherwise = path.call(print, "otherwise");
         parts.push(indentWithHardline(printedOtherwise));
@@ -50,12 +50,12 @@ const p = (node, path, print) => {
         isBodyEmpty ? "" : hardline,
         node.trimLeftEndfor ? "{%-" : "{%",
         " endfor ",
-        node.trimRight ? "-%}" : "%}"
+        node.trimRight ? "-%}" : "%}",
     );
 
     return concat(parts);
 };
 
 module.exports = {
-    printForStatement: p
+    printForStatement: p,
 };

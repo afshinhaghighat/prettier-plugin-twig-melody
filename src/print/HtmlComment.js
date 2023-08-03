@@ -4,7 +4,7 @@ const {
     createTextGroups,
     stripHtmlCommentChars,
     normalizeHtmlComment,
-    countNewlines
+    countNewlines,
 } = require("../util");
 
 const p = (node, path, print) => {
@@ -19,5 +19,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printHtmlComment: p
+    printHtmlComment: p,
 };

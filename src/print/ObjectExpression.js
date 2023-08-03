@@ -11,7 +11,7 @@ const p = (node, path, print, options) => {
     const separator = options.twigAlwaysBreakObjects ? hardline : line;
     const indentedContent = concat([
         line,
-        join(concat([",", separator]), mappedElements)
+        join(concat([",", separator]), mappedElements),
     ]);
 
     const parts = ["{", indent(indentedContent), separator, "}"];
@@ -21,5 +21,5 @@ const p = (node, path, print, options) => {
 };
 
 module.exports = {
-    printObjectExpression: p
+    printObjectExpression: p,
 };

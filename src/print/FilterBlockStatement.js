@@ -17,12 +17,12 @@ const p = (node, path, print) => {
         hardline,
         node.trimLeftEndfilter ? "{%-" : "{%",
         " endfilter ",
-        node.trimRight ? "-%}" : "%}"
+        node.trimRight ? "-%}" : "%}",
     ]);
 
     return concat([openingGroup, body, closingStatement]);
 };
 
 module.exports = {
-    printFilterBlockStatement: p
+    printFilterBlockStatement: p,
 };

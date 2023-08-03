@@ -8,7 +8,7 @@ const combinedExports = Object.assign(
     pluginUtil,
     publicSymbols,
     publicFunctions,
-    printFunctions
+    printFunctions,
 );
 
 module.exports = combinedExports;

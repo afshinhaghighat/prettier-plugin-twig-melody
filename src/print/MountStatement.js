@@ -2,7 +2,7 @@ const prettier = require("prettier");
 const { group, concat, indent, line, hardline } = prettier.doc.builders;
 const { EXPRESSION_NEEDED, STRING_NEEDS_QUOTES } = require("../util");
 
-const formatDelay = delay => {
+const formatDelay = (delay) => {
     return "" + delay / 1000 + "s";
 };
 
@@ -38,9 +38,9 @@ const buildOpener = (node, path, print) => {
                 concat([
                     line,
                     "delay placeholder by ",
-                    formatDelay(node.delayBy)
-                ])
-            )
+                    formatDelay(node.delayBy),
+                ]),
+            ),
         );
     }
     const trimRightMount =
@@ -56,7 +56,7 @@ const buildBody = (path, print) => {
 const buildErrorHandling = (node, path, print) => {
     const parts = [];
     parts.push(
-        concat([hardline, node.trimLeftCatch ? "{%-" : "{%", " catch "])
+        concat([hardline, node.trimLeftCatch ? "{%-" : "{%", " catch "]),
     );
     if (node.errorVariableName) {
         parts.push(path.call(print, "errorVariableName"), " ");
@@ -82,8 +82,8 @@ const p = (node, path, print) => {
                 hardline,
                 node.trimLeftEndmount ? "{%-" : "{%",
                 " endmount ",
-                node.trimRight ? "-%}" : "%}"
-            ])
+                node.trimRight ? "-%}" : "%}",
+            ]),
         );
     }
 
@@ -91,5 +91,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printMountStatement: p
+    printMountStatement: p,
 };

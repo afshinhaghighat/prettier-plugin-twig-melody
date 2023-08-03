@@ -3,7 +3,7 @@ const { concat, line, indent, group } = prettier.doc.builders;
 const {
     EXPRESSION_NEEDED,
     STRING_NEEDS_QUOTES,
-    wrapExpressionIfNeeded
+    wrapExpressionIfNeeded,
 } = require("../util");
 
 const p = (node, path, print) => {
@@ -24,5 +24,5 @@ const p = (node, path, print) => {
 };
 
 module.exports = {
-    printConditionalExpression: p
+    printConditionalExpression: p,
 };
