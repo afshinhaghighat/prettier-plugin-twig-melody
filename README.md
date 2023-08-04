@@ -4,12 +4,18 @@
 
 ---
 
-This plugin for Prettier is a fork of [`prettier-plugin-twig-melody`](https://github.com/trivago/prettier-plugin-twig-melody), which is currently unmaintained. Several enhancements have been added to fit my development and templating needs.
+This plugin for Prettier is a fork of [`prettier-plugin-twig-melody`](https://github.com/trivago/prettier-plugin-twig-melody), which is currently unmaintained and [`@supersoniks/prettier-plugin-twig-melody`](https://github.com/bitbirddev/prettier-plugin-twig-melody) with serveral enhancements. The newer version of prettier has removed multiple deprecated methods and functions, and led to several issues which are fixed in this repo.
 
 ## Install
 
 ```bash
 yarn add --dev @afshinhaghighat/prettier-plugin-twig-melody
+```
+
+or
+
+```bash
+npm install --save-dev @afshinhaghighat/prettier-plugin-twig-melody
 ```
 
 ## Use
@@ -30,7 +36,7 @@ In your editor, if the plugin is not automatically picked up and invoked (e.g., 
 
 ## Enhancements
 
-- Preserve `only` keyword in twig templates.
-- Block statements : no empty line between opening end closing `block` statements. 
-- Html element : nno empty line between opening and closing tags. 
-
+-   Preserve `only` keyword in twig templates.
+-   Block statements : no empty line between opening end closing `block` statements.
+-   Html element : nno empty line between opening and closing tags.
+-   Updated `npm` packages to the latest version: `Prettier 3.0.0` is now included and issues related are fixed
