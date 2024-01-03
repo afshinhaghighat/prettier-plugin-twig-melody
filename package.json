@@ -6,7 +6,10 @@
     "publishConfig": {
         "access": "public"
     },
-    "repository": "https://github.com/afshinhaghighat/prettier-plugin-twig-melody",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/afshinhaghighat/prettier-plugin-twig-melody.git"
+    },
     "author": "Tom Bartel <thomas.bartel@trivago.com>",
     "license": "Apache 2.0",
     "files": [
