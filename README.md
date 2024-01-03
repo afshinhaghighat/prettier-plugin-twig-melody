@@ -39,4 +39,4 @@ In your editor, if the plugin is not automatically picked up and invoked (e.g., 
 -   Preserve `only` keyword in twig templates.
 -   Block statements : no empty line between opening end closing `block` statements.
 -   Html element : nno empty line between opening and closing tags.
--   Updated `npm` packages to the latest version: `Prettier 3.0.0` is now included and issues related are fixed
+-   Updated `npm` packages to the latest version: `Prettier 3.1.1` is now included and issues related are fixed
